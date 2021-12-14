@@ -16,7 +16,7 @@ class ApplicationsController < ApplicationController
 
     @selected_pets = @application.pets
     if params[:description]
-      @applications.update({description: params[:desription]})
+      @applications.update({description: params[:description]})
       @application.save
     end
     @application.status_update
@@ -34,14 +34,16 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    application = Application.update(application_params)
+    @application = Application.find(params[:id])
+    # @application.update({description: params[:description]})
+    @application.update(application_params)
+    @application.save
+    @application.status_update
   end
 
-private
 
+private
   def application_params
     params.permit(:name, :address, :city, :state, :zip, :description, :status)
   end
-
-
 end

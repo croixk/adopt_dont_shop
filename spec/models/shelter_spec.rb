@@ -66,6 +66,15 @@ RSpec.describe Shelter, type: :model do
       it 'returns the number of pets at the given shelter' do
         expect(@shelter_1.pet_count).to eq(3)
       end
+
+
+    describe '.reverse_alphabetical' do
     end
+
+    describe '.pending_applications' do
+
+    end
+
   end
+end
 end
