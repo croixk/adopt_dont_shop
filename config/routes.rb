@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :shelters, :applications
+  end
+
   get '/', to: 'application#welcome'
 
   get '/shelters', to: 'shelters#index'
@@ -48,11 +52,9 @@ Rails.application.routes.draw do
   post '/applications', to: 'applications#create'
   # what to do for this?
   patch '/applications/:id', to: 'applications#update'
-  patch '/applications', to: 'applications#update'
+
 
   post '/application_pets/new', to:'application_pets#create'
-  # get '/application_pets/:id', to: 'application_pets#new'
-  # get '/application'
 
 
 end

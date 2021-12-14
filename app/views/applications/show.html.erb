@@ -1,16 +1,14 @@
 
 <section id="application- <%  %> "
 
-<h1><%= @application.name %></h1>
-<h3><%= @application.address %></h3>
-<h3><%= @application.city %></h3>
-<h3><%= @application.state %></h3>
-<h3><%= @application.zip %></h3>
-<h3><%= @application.description %></h3>
-<h3><%= @application.status %></h3>
-
-
-<p> Pets on this application </p> <% @application.pets.each do |pet| %>
+<h3>Name:<%= @application.name %></h3>
+<p>Address:<%= @application.address %></p>
+<p>City:<%= @application.city %></p>
+<p>State:<%= @application.state %></p>
+<p>ZIP:<%= @application.zip %></p>
+<p>Description:<%= @application.description %></p>
+<p>Status:<%= @application.status %></p>
+<p> Pets on this application: </p> <% @application.pets.each do |pet| %>
 <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
 
 <% end %>
@@ -34,9 +32,9 @@
 <% end %>
 
 
-<% if @application.has_pets? %>
+<% if @application.has_pets? && @application.description == "" %>
   <h3>Submit my application</h3>
-  <%= form_with url: "/applications", method: :patch, local: true do |form| %>
+  <%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |form| %>
     <%= form.label :description %>
     <%= form.text_field :description %>
     <%= form.submit 'Submit this application' %>

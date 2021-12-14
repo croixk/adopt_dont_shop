@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'application creation' do
 
   it 'create application' do
-    @application_joe = Application.create!(name: 'Joe', address: '5555 Pine St', city: 'Boulder', state: 'Colorado', zip: '80304', description: 'animal lover', status: 'In Progress')
+    @application_joe = Application.create!(name: 'Joe', address: '5555 Pine St', city: 'Boulder', state: 'Colorado', zip: '80304')
     visit "/applications/#{@application_joe.id}"
   end
 
@@ -17,8 +17,6 @@ RSpec.describe 'application creation' do
     fill_in('city', with: 'Denver')
     fill_in('state', with: 'CO')
     fill_in('zip', with: '55055')
-    fill_in('description', with: 'description test')
-    fill_in('status', with: 'status test')
 
     click_on 'Create new application'
     # save_and_open_page
